@@ -47,13 +47,15 @@ input[type=text] {
 }
 
 ul {
-  width: 300px;
+  width: 600px;
   font-size: 30px;
+  text-align: center;
 }
 
 li {
   margin-bottom: 20px;
-  list-style-type: square;
+  list-style-type: none;
+
 
 }
 
