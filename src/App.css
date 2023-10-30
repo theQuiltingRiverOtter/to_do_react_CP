@@ -1,0 +1,66 @@
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-color: #f2e8cf;
+}
+
+.complete {
+  text-decoration: line-through;
+}
+
+h1 {
+  color: #386641;
+  font-size: 70px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+}
+
+.toDoBtn {
+  width: 100%;
+  margin: 10px;
+  background-color: #bc4749;
+  color: white;
+  font-size: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 8px;
+
+}
+
+input[type=text] {
+  border: none;
+  border-bottom: 2px solid #6a994e;
+  width: 100%;
+  font-size: 20px;
+  padding: 10px;
+}
+
+ul {
+  width: 300px;
+  font-size: 30px;
+}
+
+li {
+  margin-bottom: 20px;
+  list-style-type: square;
+
+}
+
+.deletBtn {
+  background-color: #a7c957;
+  border: none;
+  padding: 5px;
+  margin-left: 10px;
+  border-radius: 8px;
+}
