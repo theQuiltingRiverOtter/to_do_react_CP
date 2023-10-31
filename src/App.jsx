@@ -1,27 +1,20 @@
 import { useState } from 'react'
 import './App.css'
+import Task from "./Task.jsx"
+import Form from "./Form.jsx"
 
 function App() {
-  let [tasks, setTasks] = useState([])
-  function addTask(e) {
+  const [tasks, setTasks] = useState([]);
+
+
+  function addTask(e, taskDesc) {
     e.preventDefault();
-    const task = e.target[0].value
+    const newTask = { id: crypto.randomUUID(), task: taskDesc, completed: false }
     setTasks(prevTasks => {
-      return [...prevTasks, { id: crypto.randomUUID(), task: task, completed: false }]
+      return [...prevTasks, newTask]
     })
-    e.target[0].value = '';
   }
 
-  const markComplete = (e) => {
-    e.stopPropagation();
-    const newTasks = tasks.map(task => {
-      if (e.target.id == task.id) {
-        task.completed = !task.completed;
-      }
-      return task;
-    })
-    setTasks(newTasks)
-  }
 
   const deleteTask = (e) => {
     e.stopPropagation();
@@ -29,22 +22,15 @@ function App() {
     setTasks(newTasks);
   }
 
-
   return (
 
     <>
       <h1>To Do List</h1>
-
-
-      <form onSubmit={(e) => addTask(e)}>
-        <input id='task' type='text'></input>
-        <button className='toDoBtn' type='submit'>Submit</button>
-      </form >
+      <Form addTask={addTask} />
       <ul id='list'>
-        {tasks.map((task) => {
-          return <li onClick={markComplete} key={task.id} className={(task.completed) ? 'complete' : 'incomplete'
-          }> <span id={task.id}>{task.task}</span> <button id={task.id} className='deletBtn' onClick={deleteTask}>Delete</button></li>
-        })}
+        {tasks.map((task => (
+          <Task key={task.id} taskId={task.id} taskName={task.task} taskComplete={task.completed} handleClick={deleteTask} />
+        )))}
       </ul >
     </>
   )
